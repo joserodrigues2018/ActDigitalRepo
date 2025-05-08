@@ -18,9 +18,12 @@ namespace Ambev.DeveloperEvaluation.ORM.Repositories
            return await  _context.Products.FirstOrDefaultAsync(p => p.Id == id, cancellationToken);
         }
 
-        public Task<Product> CreateAsync(Product product, CancellationToken cancellationToken)
+        public async Task<Product> CreateAsync(Product product, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+           await _context.Products.AddAsync(product, cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
+
+            return product;
         }
     }
 }
