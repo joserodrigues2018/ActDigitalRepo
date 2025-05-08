@@ -7,8 +7,8 @@ namespace Ambev.DeveloperEvaluation.WebApi.Features.Products.GetProduct
     {
         public GetProductProfile()
         {
-            CreateMap<Guid, GetProductrCommand>()
-                .ConstructUsing(id => new GetProductrCommand(id));
+            CreateMap<Guid, GetProductCommand>()
+                .ConstructUsing(id => new GetProductCommand(id));
         }
     }
 }
