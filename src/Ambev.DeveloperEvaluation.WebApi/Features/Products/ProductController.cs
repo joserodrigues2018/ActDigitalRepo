@@ -77,7 +77,7 @@ namespace Ambev.DeveloperEvaluation.WebApi.Features.Products
                 Message = "Product created successfully",
                 Data = _mapper.Map<CreateProductResponse>(response)
             });
-        5}
+        }
 
     }
 }
