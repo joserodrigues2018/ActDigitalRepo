@@ -4,11 +4,11 @@ using AutoMapper;
 
 namespace Ambev.DeveloperEvaluation.WebApi.Mappings.Products
 {
-    public class GetProducResponseeProfile: Profile
+    public class GetProducResponseProfile: Profile
     {
-        public GetProducResponseeProfile()
+        public GetProducResponseProfile()
         {
-            CreateMap<GetProductrResult, GetProductResponse>();
+            CreateMap<GetProductResult, GetProductResponse>();
         }
     }
 }
