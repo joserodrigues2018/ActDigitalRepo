@@ -2,11 +2,11 @@
 
 namespace Ambev.DeveloperEvaluation.Application.Products.GetProduct
 {
-    public class GetProductrCommand: IRequest<GetProductrResult>
+    public class GetProductCommand: IRequest<GetProductResult>
     {
         public Guid Id { get; }
 
-        public GetProductrCommand(Guid id)
+        public GetProductCommand(Guid id)
         {
             Id = id;
         }

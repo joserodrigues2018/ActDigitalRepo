@@ -1,6 +1,6 @@
 ﻿namespace Ambev.DeveloperEvaluation.Application.Products.GetProduct
 {
-    public class GetProductrResult
+    public class GetProductResult
     {
         public Guid Id { get; set; }
         public string Title { get; set; } = string.Empty;

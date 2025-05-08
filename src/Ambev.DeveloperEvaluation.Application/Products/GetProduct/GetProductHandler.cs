@@ -4,18 +4,18 @@ using MediatR;
 
 namespace Ambev.DeveloperEvaluation.Application.Products.GetProduct
 {
-    public class GetProductrHandler: IRequestHandler<GetProductrCommand, GetProductrResult>
+    public class GetProductHandler: IRequestHandler<GetProductCommand, GetProductResult>
     {
         private readonly IProductRepository _productRepository;
         private readonly IMapper _mapper;
 
-        public GetProductrHandler(IProductRepository productRepository, IMapper mapper)
+        public GetProductHandler(IProductRepository productRepository, IMapper mapper)
         {
             _productRepository = productRepository;
             _mapper = mapper;
         }
 
-        public Task<GetProductrResult> Handle(GetProductrCommand request, CancellationToken cancellationToken)
+        public Task<GetProductResult> Handle(GetProductCommand request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }
