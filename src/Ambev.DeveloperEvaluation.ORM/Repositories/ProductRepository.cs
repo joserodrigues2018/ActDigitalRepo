@@ -1,5 +1,6 @@
 ﻿using Ambev.DeveloperEvaluation.Domain.Entities;
 using Ambev.DeveloperEvaluation.Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ambev.DeveloperEvaluation.ORM.Repositories
 {
@@ -11,12 +12,13 @@ namespace Ambev.DeveloperEvaluation.ORM.Repositories
         {
             _context = context;       
         }
-        public Task<User> CreateAsync(Product product, CancellationToken cancellationToken = default)
+
+        public async Task<Product?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+           return await  _context.Products.FirstOrDefaultAsync(p => p.Id == id, cancellationToken);
         }
 
-        public Task<User?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+        public Task<Product> CreateAsync(Product product, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

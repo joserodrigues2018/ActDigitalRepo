@@ -1,6 +1,7 @@
 ﻿using Ambev.DeveloperEvaluation.Domain.Repositories;
 using AutoMapper;
 using MediatR;
+using FluentValidation;
 
 namespace Ambev.DeveloperEvaluation.Application.Products.GetProduct
 {
@@ -14,10 +15,27 @@ namespace Ambev.DeveloperEvaluation.Application.Products.GetProduct
             _productRepository = productRepository;
             _mapper = mapper;
         }
-
-        public Task<GetProductResult> Handle(GetProductCommand request, CancellationToken cancellationToken)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        /// <exception cref="ValidationException"></exception>
+        /// <exception cref="KeyNotFoundException"></exception>
+        public async Task<GetProductResult> Handle(GetProductCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var validator = new GetProductValidator();
+            var validationResult = await validator.ValidateAsync(request, cancellationToken);
+
+            if (!validationResult.IsValid)
+                throw new ValidationException(validationResult.Errors);
+
+            var product = await _productRepository.GetByIdAsync(request.Id, cancellationToken);
+            if (product == null)
+                throw new KeyNotFoundException($"Product with ID {request.Id} not found");
+
+            return _mapper.Map<GetProductResult>(product);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Ambev.DeveloperEvaluation.WebApi.Features.Products
         private readonly IMapper _mapper;
 
         /// <summary>
-        /// 
+        /// Constructor ProductController
         /// </summary>
         /// <param name="mediator"></param>
         /// <param name="mapper"></param>
@@ -26,7 +26,12 @@ namespace Ambev.DeveloperEvaluation.WebApi.Features.Products
         }
 
 
-        // GET api/<PrroductController>/5
+        /// <summary>
+        /// GetProduct find by ID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(ApiResponseWithData<GetProductResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
