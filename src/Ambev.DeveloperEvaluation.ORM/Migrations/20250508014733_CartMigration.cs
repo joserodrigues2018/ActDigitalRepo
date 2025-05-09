@@ -17,9 +17,11 @@ namespace Ambev.DeveloperEvaluation.ORM.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     UserId = table.Column<string>(type: "text", nullable: true),
-                    DateRegistro = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    DateRegistro = table.Column<DateTime>(type: "timestamp with time zone", nullable: false, 
+                                                          defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)),
                     ProductId = table.Column<string>(type: "text", nullable: true),
-                    Quantity = table.Column<int>(type: "integer", nullable: false)
+                    Quantity = table.Column<int>(type: "integer", nullable: false),
+
                 },
                 constraints: table =>
                 {
