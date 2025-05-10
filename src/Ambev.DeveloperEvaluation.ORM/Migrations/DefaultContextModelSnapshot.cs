@@ -31,12 +31,6 @@ namespace Ambev.DeveloperEvaluation.ORM.Migrations
                     b.Property<DateTime>("DateRegistro")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("ProductId")
-                        .HasColumnType("text");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("integer");
-
                     b.Property<string>("UserId")
                         .HasColumnType("text");
 
