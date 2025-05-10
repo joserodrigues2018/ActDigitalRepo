@@ -6,7 +6,8 @@ namespace Ambev.DeveloperEvaluation.Domain.Entities
     {
         public string? UserId { get; set; }
         public DateTime DateRegistro { get; set; }
-        //public IList<CartIten>? CartItens { get; set; }
+
+        public IList<CartItem>? CartItens { get; set; }
 
         public Cart()
         {
