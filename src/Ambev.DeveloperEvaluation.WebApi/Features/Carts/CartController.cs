@@ -57,6 +57,12 @@ namespace Ambev.DeveloperEvaluation.WebApi.Features.Carts
                 Data = _mapper.Map<GetCartResponse>(response)
             });
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(typeof(ApiResponseWithData<CreateCartResponse>), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]

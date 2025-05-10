@@ -1,9 +1,10 @@
-﻿using Ambev.DeveloperEvaluation.Domain.Enums;
-
-namespace Ambev.DeveloperEvaluation.WebApi.Features.Carts.CreateCart
+﻿namespace Ambev.DeveloperEvaluation.WebApi.Features.Carts.CreateCart
 {
     public class CreateCartResquest
     {
         public string? UserId { get; set; }
+        public DateTime DateRegistro { get; set; }
+
+        public IList<CreateCartItemResquest>? CartItens { get; set; }
     }
 }

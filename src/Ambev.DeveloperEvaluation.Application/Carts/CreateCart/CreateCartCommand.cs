@@ -1,5 +1,4 @@
-﻿
-using Ambev.DeveloperEvaluation.Common.Validation;
+﻿using Ambev.DeveloperEvaluation.Common.Validation;
 using MediatR;
 
 namespace Ambev.DeveloperEvaluation.Application.Carts.CreateCart
@@ -10,8 +9,9 @@ namespace Ambev.DeveloperEvaluation.Application.Carts.CreateCart
     public class CreateCartCommand: IRequest<CreateCartResult>
     {
         public string? UserId { get; set; }
-        //public string? ProductId { get; set; }
-        //public int Quantity { get; set; }
+        public DateTime DateRegistro { get; set; }
+
+        public IList<CreateCartItemCommand>? CartItens { get; set; }
 
         public ValidationResultDetail Validate()
         {

@@ -8,6 +8,7 @@ namespace Ambev.DeveloperEvaluation.WebApi.Features.Carts.CreateCart
         public CreateCartProfile()
         {
             CreateMap<CreateCartResquest, CreateCartCommand>();
+            CreateMap<CreateCartItemResquest, CreateCartItemCommand>();
             CreateMap<CreateCartResult, CreateCartResponse>();
         }
 
