@@ -10,6 +10,6 @@
         public string? Filial { get; set; }
         public string? StatusCart { get; set; }
 
-        public IList<CreateCartItemResquest>? CartItems { get; set; }
+        public IList<CreateCartItemResponse>? CartItems { get; set; }
     }
 }
