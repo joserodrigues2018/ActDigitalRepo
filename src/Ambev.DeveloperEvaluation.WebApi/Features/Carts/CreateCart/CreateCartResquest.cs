@@ -3,7 +3,7 @@
     public class CreateCartResquest
     {
         public string? UserId { get; set; }
-        public DateTime DateRegistro { get; set; }
+        public DateTime CartDate { get; set; }
 
         public IList<CreateCartItemResquest>? CartItens { get; set; }
     }
