@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
-
-namespace Ambev.DeveloperEvaluation.Application.Carts.CreateCart
+﻿namespace Ambev.DeveloperEvaluation.Application.Carts.CreateCart
 {
     public class CreateCartResult
     {
