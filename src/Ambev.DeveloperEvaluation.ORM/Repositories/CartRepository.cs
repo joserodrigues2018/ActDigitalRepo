@@ -20,7 +20,7 @@ namespace Ambev.DeveloperEvaluation.ORM.Repositories
 
         public async Task<Cart> CreateAsync(Cart Cart, CancellationToken cancellationToken)
         {
-           await _context.Carts.AddAsync(Cart, cancellationToken);
+            await _context.Carts.AddAsync(Cart, cancellationToken);
             await _context.SaveChangesAsync(cancellationToken);
 
             return Cart;
