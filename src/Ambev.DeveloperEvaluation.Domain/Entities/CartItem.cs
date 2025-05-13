@@ -13,6 +13,5 @@ namespace Ambev.DeveloperEvaluation.Domain.Entities
         public string? StatusIten { get; set; }
 
         public Cart? CartIdNav { get; set; }
-        public Product? ProductCartNav { get; set; }
     }
 } 

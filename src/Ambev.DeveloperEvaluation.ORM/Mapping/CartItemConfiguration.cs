@@ -16,6 +16,14 @@ namespace Ambev.DeveloperEvaluation.ORM.Mapping
             builder.Property(u => u.CartId).IsRequired().HasConversion<string>(); 
             builder.Property(u => u.ProductId).IsRequired().HasConversion<string>();
             builder.Property(u => u.Quantity).IsRequired().HasConversion<int>();
+            builder.Property(u => u.UnitPrice).IsRequired().HasPrecision(5, 2);
+            builder.Property(u => u.ValueTotIten).IsRequired().HasPrecision(5, 2);
+            builder.Property(u => u.Discount).IsRequired().HasConversion<int>();
+
+
+            builder.Property(u => u.StatusIten)
+                    .HasConversion<string>()
+                    .HasMaxLength(20);
 
         }
     }

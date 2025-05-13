@@ -13,6 +13,12 @@ namespace Ambev.DeveloperEvaluation.ORM.Mapping
             builder.HasKey(u => u.Id);
             builder.Property(u => u.Id).HasColumnType("uuid").HasDefaultValueSql("gen_random_uuid()");
             builder.Property(u => u.UserId).IsRequired().HasConversion<string>();
+            builder.Property(u => u.Filial).IsRequired().HasMaxLength(100);
+            builder.Property(u => u.Client).IsRequired().HasMaxLength(100);
+            builder.Property(u => u.ValueTotal).IsRequired().HasPrecision(5, 2);
+            builder.Property(u => u.StatusCart)
+                    .HasConversion<string>()
+                    .HasMaxLength(20);
 
         }
     }
