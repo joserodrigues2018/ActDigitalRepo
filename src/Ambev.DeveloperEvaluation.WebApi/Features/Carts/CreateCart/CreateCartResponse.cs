@@ -9,5 +9,7 @@
         public decimal ValueTotal { get; set; }
         public string? Filial { get; set; }
         public string? StatusCart { get; set; }
+
+        public IList<CreateCartItemResquest>? CartItems { get; set; }
     }
 }
