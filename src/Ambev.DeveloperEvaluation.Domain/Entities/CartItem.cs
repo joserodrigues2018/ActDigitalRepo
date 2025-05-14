@@ -1,4 +1,5 @@
 ﻿using Ambev.DeveloperEvaluation.Domain.Common;
+using Ambev.DeveloperEvaluation.Domain.Enums;
 
 namespace Ambev.DeveloperEvaluation.Domain.Entities
 {
@@ -10,7 +11,7 @@ namespace Ambev.DeveloperEvaluation.Domain.Entities
         public decimal UnitPrice { get; set; }
         public decimal ValueTotIten { get; set; }
         public int Discount { get; set; }
-        public string? StatusIten { get; set; }
+        public CartStatus StatusIten { get; set; }
 
         public Cart? CartIdNav { get; set; }
     }
