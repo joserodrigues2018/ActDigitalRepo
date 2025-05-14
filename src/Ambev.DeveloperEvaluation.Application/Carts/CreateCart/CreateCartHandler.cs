@@ -8,11 +8,13 @@ namespace Ambev.DeveloperEvaluation.Application.Carts.CreateCart
 {
     public class CreateCartHandler: IRequestHandler<CreateCartCommand, CreateCartResult>
     {
+        private readonly IProductRepository _productRepository;
         private readonly ICartRepository _cartRepository;
         private readonly IMapper _mapper;
 
-        public CreateCartHandler(ICartRepository cartRepository, IMapper mapper)
+        public CreateCartHandler(IProductRepository productRepository,ICartRepository cartRepository, IMapper mapper)
         {
+            _productRepository = productRepository;
             _cartRepository = cartRepository;
             _mapper = mapper;
         }
@@ -31,13 +33,49 @@ namespace Ambev.DeveloperEvaluation.Application.Carts.CreateCart
             if (!validationResult.IsValid)
                 throw new ValidationException(validationResult.Errors);
 
-            var Cart = _mapper.Map<Cart>(command);
+            var cart = _mapper.Map<Cart>(command);
 
-            var CreateCart = await _cartRepository.CreateAsync(Cart, cancellationToken);
+            await DscountCart(cart, cancellationToken);
 
-            var result = _mapper.Map<CreateCartResult>(CreateCart);
+            var createCart = await _cartRepository.CreateAsync(cart, cancellationToken);
+
+            var result = _mapper.Map<CreateCartResult>(createCart);
 
             return result;
+        }
+
+        private async Task DscountCart(Cart cart, CancellationToken cancellationToken)
+        {
+            foreach (var item in cart.CartItens!)
+            {
+                var product = await _productRepository.GetByIdAsync(Guid.Parse(item.ProductId!.ToString()), cancellationToken);
+
+                if (product == null)
+                    throw new KeyNotFoundException($"Product with ID {item.ProductId} not found");
+
+                item.UnitPrice = product.Price;
+
+                if (item.Quantity > 4 && item.Quantity <= 5)
+                {
+                    item.Discount = 10;
+                }
+                else if (item.Quantity >= 10 && item.Quantity <= 20)
+                {
+                    item.Discount = 20;
+                }
+                else
+                {
+                    item.Discount = 0;
+                }
+
+                var valorItem = item.Quantity * item.UnitPrice;
+
+                var valorDiscount = (item.Quantity * item.UnitPrice * item.Discount) / 100;
+
+                item.ValueTotIten = valorItem - valorDiscount;
+
+                cart.ValueTotal += item.ValueTotIten;
+            }
         }
     }
 }
