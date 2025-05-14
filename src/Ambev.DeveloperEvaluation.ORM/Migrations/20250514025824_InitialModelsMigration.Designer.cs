@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Ambev.DeveloperEvaluation.ORM.Migrations
 {
     [DbContext(typeof(DefaultContext))]
-    [Migration("20250513143840_UpdateConfigurationsCartMigration")]
-    partial class UpdateConfigurationsCartMigration
+    [Migration("20250514025824_InitialModelsMigration")]
+    partial class InitialModelsMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,8 +40,11 @@ namespace Ambev.DeveloperEvaluation.ORM.Migrations
                     b.Property<string>("Filial")
                         .HasColumnType("text");
 
-                    b.Property<string>("StatusCart")
-                        .HasColumnType("text");
+                    b.Property<int>("NumeroVenda")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("StatusCart")
+                        .HasColumnType("integer");
 
                     b.Property<string>("UserId")
                         .HasColumnType("text");
@@ -72,13 +75,13 @@ namespace Ambev.DeveloperEvaluation.ORM.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
 
-                    b.Property<string>("StatusIten")
-                        .HasColumnType("text");
+                    b.Property<int>("StatusIten")
+                        .HasColumnType("integer");
 
-                    b.Property<decimal?>("UnitPrice")
+                    b.Property<decimal>("UnitPrice")
                         .HasColumnType("numeric");
 
-                    b.Property<decimal?>("ValueTotIten")
+                    b.Property<decimal>("ValueTotIten")
                         .HasColumnType("numeric");
 
                     b.HasKey("Id");

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Ambev.DeveloperEvaluation.ORM.Migrations
 {
     /// <inheritdoc />
-    public partial class NewModelsMigration : Migration
+    public partial class InitialModelsMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -19,7 +19,12 @@ namespace Ambev.DeveloperEvaluation.ORM.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     UserId = table.Column<string>(type: "text", nullable: true),
-                    DateRegistro = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    NumeroVenda = table.Column<int>(type: "integer", nullable: false),
+                    Client = table.Column<string>(type: "text", nullable: true),
+                    CartDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ValueTotal = table.Column<decimal>(type: "numeric", nullable: false),
+                    Filial = table.Column<string>(type: "text", nullable: true),
+                    StatusCart = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -40,6 +45,30 @@ namespace Ambev.DeveloperEvaluation.ORM.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Products", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "CartItens",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    CartId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ProductId = table.Column<string>(type: "text", nullable: true),
+                    Quantity = table.Column<int>(type: "integer", nullable: false),
+                    UnitPrice = table.Column<decimal>(type: "numeric", nullable: false),
+                    ValueTotIten = table.Column<decimal>(type: "numeric", nullable: false),
+                    Discount = table.Column<int>(type: "integer", nullable: false),
+                    StatusIten = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CartItens", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CartItens_Carts_CartId",
+                        column: x => x.CartId,
+                        principalTable: "Carts",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -73,16 +102,24 @@ namespace Ambev.DeveloperEvaluation.ORM.Migrations
                     { new Guid("f6b69aa6-e2f3-43f6-a05e-bd2197665248"), "Alimentos", "Leite em liquido", "Image1", 1.50m, "Produto Teste1" },
                     { new Guid("fb461642-0ab9-4c35-b267-db7245389144"), "Alimentos", "cebola", "Image1", 3.59m, "Produto Teste4" }
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CartItens_CartId",
+                table: "CartItens",
+                column: "CartId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Carts");
+                name: "CartItens");
 
             migrationBuilder.DropTable(
                 name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "Carts");
         }
     }
 }

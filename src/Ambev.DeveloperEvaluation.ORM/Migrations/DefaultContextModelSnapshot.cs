@@ -37,8 +37,11 @@ namespace Ambev.DeveloperEvaluation.ORM.Migrations
                     b.Property<string>("Filial")
                         .HasColumnType("text");
 
-                    b.Property<string>("StatusCart")
-                        .HasColumnType("text");
+                    b.Property<int>("NumeroVenda")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("StatusCart")
+                        .HasColumnType("integer");
 
                     b.Property<string>("UserId")
                         .HasColumnType("text");
@@ -48,7 +51,7 @@ namespace Ambev.DeveloperEvaluation.ORM.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Carts");
+                    b.ToTable("Carts", (string)null);
                 });
 
             modelBuilder.Entity("Ambev.DeveloperEvaluation.Domain.Entities.CartItem", b =>
@@ -69,20 +72,20 @@ namespace Ambev.DeveloperEvaluation.ORM.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
 
-                    b.Property<string>("StatusIten")
-                        .HasColumnType("text");
+                    b.Property<int>("StatusIten")
+                        .HasColumnType("integer");
 
-                    b.Property<decimal?>("UnitPrice")
+                    b.Property<decimal>("UnitPrice")
                         .HasColumnType("numeric");
 
-                    b.Property<decimal?>("ValueTotIten")
+                    b.Property<decimal>("ValueTotIten")
                         .HasColumnType("numeric");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CartId");
 
-                    b.ToTable("CartItens");
+                    b.ToTable("CartItens", (string)null);
                 });
 
             modelBuilder.Entity("Ambev.DeveloperEvaluation.Domain.Entities.Product", b =>
