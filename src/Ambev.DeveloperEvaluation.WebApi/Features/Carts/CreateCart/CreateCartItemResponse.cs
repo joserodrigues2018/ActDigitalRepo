@@ -1,4 +1,6 @@
-﻿namespace Ambev.DeveloperEvaluation.WebApi.Features.Carts.CreateCart
+﻿using Ambev.DeveloperEvaluation.Domain.Enums;
+
+namespace Ambev.DeveloperEvaluation.WebApi.Features.Carts.CreateCart
 {
     public class CreateCartItemResponse
     {
@@ -8,6 +10,6 @@
         public decimal? UnitPrice { get; set; }
         public decimal? ValueTotIten { get; set; }
         public int Discount { get; set; }
-        public string? StatusIten { get; set; }
+        public CartStatus StatusIten { get; set; }
     }
 }

@@ -3,6 +3,8 @@ using AutoMapper;
 using MediatR;
 using FluentValidation;
 using Ambev.DeveloperEvaluation.Domain.Entities;
+using Ambev.DeveloperEvaluation.Domain.Enums;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Ambev.DeveloperEvaluation.Application.Carts.CreateCart
 {
@@ -74,8 +76,13 @@ namespace Ambev.DeveloperEvaluation.Application.Carts.CreateCart
 
                 item.ValueTotIten = valorItem - valorDiscount;
 
-                cart.ValueTotal += item.ValueTotIten;
+                item.StatusIten = CartStatus.VendaCriada;
+
+                cart.ValueTotal += item.ValueTotIten;                
             }
+
+            cart.NumeroVenda = new Random().Next();
+            cart.StatusCart = CartStatus.VendaCriada;        
         }
     }
 }
