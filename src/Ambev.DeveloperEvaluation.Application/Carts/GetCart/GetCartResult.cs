@@ -13,6 +13,6 @@ namespace Ambev.DeveloperEvaluation.Application.Carts.GetCart
         public string? Filial { get; set; }
         public CartStatus StatusCart { get; set; }
 
-        public IList<GetCartItemResult>? CartItems { get; set; }
+        public IList<GetCartItemResult>? CartItems { get; set; } = [];
     }
 }

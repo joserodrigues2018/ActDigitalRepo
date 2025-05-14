@@ -13,7 +13,7 @@ namespace Ambev.DeveloperEvaluation.Domain.Entities
         public string? Filial { get; set; }
         public CartStatus StatusCart { get; set; }
 
-        public IList<CartItem>? CartItens { get; set; }
+        public IList<CartItem> CartItens { get; set; }
 
         public Cart()
         {

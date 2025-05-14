@@ -15,7 +15,9 @@ namespace Ambev.DeveloperEvaluation.ORM.Repositories
 
         public async Task<Cart?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
-           return await  _context.Carts.FirstOrDefaultAsync(p => p.Id == id, cancellationToken);
+            var CartItens = await _context.Carts.Include(c => c.CartItens).ToListAsync(cancellationToken);
+
+            return await _context.Carts.FirstOrDefaultAsync(c => c.Id == id);
         }
 
         public async Task<Cart> CreateAsync(Cart Cart, CancellationToken cancellationToken)

@@ -31,11 +31,30 @@ namespace Ambev.DeveloperEvaluation.Application.Carts.GetCart
             if (!validationResult.IsValid)
                 throw new ValidationException(validationResult.Errors);
 
-            var Cart = await _CartRepository.GetByIdAsync(request.Id, cancellationToken);
-            if (Cart == null)
+            var cart = await _CartRepository.GetByIdAsync(request.Id, cancellationToken);
+            if (cart == null)
                 throw new KeyNotFoundException($"Cart with ID {request.Id} not found");
+        
+            var result = _mapper.Map<GetCartResult>(cart);
 
-            return _mapper.Map<GetCartResult>(Cart);
+            foreach (var item in cart.CartItens)
+            {
+                var resulItitem = new GetCartItemResult()
+                {
+                    Id = item.Id,
+                    CartId = item.CartId,
+                    ProductId = item.ProductId,
+                    Quantity = item.Quantity,
+                    UnitPrice = item.UnitPrice,
+                    ValueTotIten = item.ValueTotIten,
+                    Discount = item.Discount,
+                    StatusIten = item.StatusIten
+                };
+
+                result.CartItems!.Add(resulItitem);
+            }
+
+            return result;
         }
     }
 }
