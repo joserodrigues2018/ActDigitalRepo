@@ -2,6 +2,7 @@
 using AutoMapper;
 using MediatR;
 using FluentValidation;
+using Ambev.DeveloperEvaluation.Domain.Entities;
 
 namespace Ambev.DeveloperEvaluation.Application.Carts.GetCart
 {
@@ -37,7 +38,7 @@ namespace Ambev.DeveloperEvaluation.Application.Carts.GetCart
         
             var result = _mapper.Map<GetCartResult>(cart);
 
-            foreach (var item in cart.CartItens)
+            foreach (var item in cart!.CartItens!)
             {
                 var resulItitem = new GetCartItemResult()
                 {
