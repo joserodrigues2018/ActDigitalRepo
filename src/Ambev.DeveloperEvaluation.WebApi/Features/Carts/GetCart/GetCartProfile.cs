@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Ambev.DeveloperEvaluation.Application.Carts.GetCart;
+using Ambev.DeveloperEvaluation.Application.Carts.CreateCart;
+using Ambev.DeveloperEvaluation.WebApi.Features.Carts.CreateCart;
 
 namespace Ambev.DeveloperEvaluation.WebApi.Features.Carts.GetCart
 {
@@ -9,6 +11,7 @@ namespace Ambev.DeveloperEvaluation.WebApi.Features.Carts.GetCart
         {
             CreateMap<Guid, GetCartCommand>()
                 .ConstructUsing(id => new GetCartCommand(id));
+            CreateMap<GetCartResult, GetCartResponse>();
         }
     }
 }
