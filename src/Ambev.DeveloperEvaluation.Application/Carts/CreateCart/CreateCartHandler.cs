@@ -9,13 +9,13 @@ namespace Ambev.DeveloperEvaluation.Application.Carts.CreateCart
 {
     public class CreateCartHandler: IRequestHandler<CreateCartCommand, CreateCartResult>
     {
-        private readonly IRulesDiscountCart _ruleDicountCart;
+        private readonly IRulesDiscountCart _ruleDiscountCart;
         private readonly ICartRepository _cartRepository;
         private readonly IMapper _mapper;
 
-        public CreateCartHandler(IRulesDiscountCart ruleDicountCart, ICartRepository cartRepository, IMapper mapper)
+        public CreateCartHandler(IRulesDiscountCart ruleDiscountCart, ICartRepository cartRepository, IMapper mapper)
         {
-            _ruleDicountCart = ruleDicountCart;
+            _ruleDiscountCart = ruleDiscountCart;
             _cartRepository = cartRepository;
             _mapper = mapper;
         }
@@ -36,7 +36,7 @@ namespace Ambev.DeveloperEvaluation.Application.Carts.CreateCart
 
             var cart = _mapper.Map<Cart>(command);
 
-            var cartRuletDiscount = await _ruleDicountCart.DiscountCart(cart, cancellationToken);
+            var cartRuletDiscount = await _ruleDiscountCart.DiscountCart(cart, cancellationToken);
 
             var createCart = await _cartRepository.CreateAsync(cartRuletDiscount, cancellationToken);
 

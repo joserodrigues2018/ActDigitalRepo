@@ -57,6 +57,4 @@ namespace Ambev.DeveloperEvaluation.Domain.Rules
             return cart;
         }
     }
-
-}
 }
