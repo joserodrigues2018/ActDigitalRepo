@@ -37,7 +37,7 @@ namespace Ambev.DeveloperEvaluation.Application.Carts.CreateCart
 
             var cart = _mapper.Map<Cart>(command);
 
-            await DscountCart(cart, cancellationToken);
+            await DiscountCart(cart, cancellationToken);
 
             var createCart = await _cartRepository.CreateAsync(cart, cancellationToken);
 
@@ -46,7 +46,7 @@ namespace Ambev.DeveloperEvaluation.Application.Carts.CreateCart
             return result;
         }
 
-        private async Task DscountCart(Cart cart, CancellationToken cancellationToken)
+        public async Task DiscountCart(Cart cart, CancellationToken cancellationToken)
         {
             foreach (var item in cart.CartItens!)
             {
