@@ -24,7 +24,7 @@ namespace Ambev.DeveloperEvaluation.Domain.Rules
 
                 item.UnitPrice = product.Price;
 
-                var valorItem = 0M;
+                var valorItem = item.Quantity * item.UnitPrice;
 
                 var valorDiscount = 0M;
 
@@ -41,8 +41,8 @@ namespace Ambev.DeveloperEvaluation.Domain.Rules
                 else
                 {
                     item.Discount = 0;
-                    valorItem = item.Quantity * item.UnitPrice;
-                }              
+                    valorDiscount = (item.Quantity * item.UnitPrice);
+                }
 
                 item.ValueTotIten = valorItem - valorDiscount;
 
