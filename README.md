@@ -6,8 +6,8 @@ Este Projeto WebApi RestFull tem a finalidade de inserir produtos no carrinho e 
 aplicando os desncontos necessários conforme as regras aplicadas de desconto para as quantidades
 do mesmo produto variando entre 10% e 20% de desconto na venda.
 
-Documentos na pasta DocsConfigWebApi que está no projeto e versionado no Git
--->> Checlist da dicumentação:
+Documentos na pasta docsConfigWebApi que está no projeto e versionado no Git
+-->> Checlist da documentação:
 1.Configuração do Ambiente para executar o projeto no Docker Desktop usando o WSL2
 1.1.Instalar o Visuao Studio 2022 Community no Windows
 1.2.Instalar o Docker Desktop no Windows
