@@ -1,6 +1,11 @@
 Projeto Teste Técnico para ActDigital
 
-Escopo: Desenvolvimento de uma camada Back-End para atender a Vendas de Produtos
+Escopo: Desenvolvimento de uma camada Back-End para atender a Vendas de Produtos carrinho de compras
+
+Este Projeto WebApi RestFull tem a finalidade de inserir produtos no carrinho e executar uma venda
+aplicando os desncontos necessários conforme as regras aplicadas de desconto para as quantidades
+do mesmo produto variando entre 10% e 20% de desconto na venda.
+
 Resumo dos Documentos na pasta DocsConfigWebApi que está no projeto e versionado no Git
 
 1.Configuração do Ambiente para executar o projeto no Docker Desktop usando o WSL2
