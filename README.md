@@ -14,6 +14,6 @@ Resumo dos Documentos na pasta DocsConfigWebApi que está no projeto e versionad
 1.3.Ativar o WSL2 do windows
 1.4.Instalar o Linux Ubuntu no WSL2
 1.5.Instalar a Imagem do PostgreSQL no Docker Desktop
-1.6.Compilar o Projeto do Git no Visual Studio no windows
+1.6.Clonar o Projeto do GitHub
 1.7.Executar o procedimento de Build e Publicação para criar a imagem e o container no Docker
 1.8.Executar os testes pelo Swagger ou Postman aos EndPoints do porjeto
