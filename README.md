@@ -16,4 +16,4 @@ Resumo dos Documentos na pasta DocsConfigWebApi que está no projeto e versionad
 1.5.Instalar a Imagem do PostgreSQL no Docker Desktop
 1.6.Clonar o Projeto do GitHub
 1.7.Executar o procedimento de Build e Publicação para criar a imagem e o container no Docker
-1.8.Executar os testes pelo Swagger ou Postman aos EndPoints do porjeto
+1.8.Executar os testes pelo Swagger ou Postman dos EndPoints do porjeto
