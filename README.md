@@ -1,7 +1,7 @@
 Projeto Teste Técnico para ActDigital
 
 Escopo: Desenvolvimento de uma camada Back-End para atender a Vendas de Produtos
-Resumo dos Documentos na pasta Docs
+Resumo dos Documentos na pasta DocsConfigWebApi que está no projeto e versionado no Git
 
 1.Configuração do Ambiente para executar o projeto no Docker Desktop usando o WSL2
 1.1.Instalar o Visuao Studio 2022 Community
