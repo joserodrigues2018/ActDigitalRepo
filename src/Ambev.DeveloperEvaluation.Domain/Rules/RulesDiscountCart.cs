@@ -8,9 +8,12 @@ namespace Ambev.DeveloperEvaluation.Domain.Rules
     public class RulesDiscountCart : IRulesDiscountCart
     {
         private readonly IProductRepository _productRepository;
-        public RulesDiscountCart(IProductRepository productRepository)
+        private readonly ICalcDiscount _calcDiscount;
+
+        public RulesDiscountCart(IProductRepository productRepository, ICalcDiscount calcDiscount)
         {
             _productRepository = productRepository;
+            _calcDiscount = calcDiscount;
         }
 
         public async Task<Cart> DiscountCart(Cart cart, CancellationToken cancellationToken)
@@ -31,20 +34,19 @@ namespace Ambev.DeveloperEvaluation.Domain.Rules
                 if (item.Quantity >= 4 && item.Quantity <= 9)
                 {
                     item.Discount = 10;
-                    valorDiscount = (item.Quantity * item.UnitPrice * item.Discount) / 100;
                 }
                 else if (item.Quantity >= 10 && item.Quantity <= 20)
                 {
                     item.Discount = 20;
-                    valorDiscount = (item.Quantity * item.UnitPrice * item.Discount) / 100;
                 }
                 else
                 {
                     item.Discount = 0;
-                    valorDiscount = item.Discount;
                 }
 
-                item.ValueTotIten = valorItem - valorDiscount;
+                valorDiscount = item.Discount == 0 ? 0 : _calcDiscount.ApplyDiscount(item.UnitPrice, item.Quantity, item.Discount);
+
+                item.ValueTotIten = valorDiscount == 0 ? valorItem:(valorItem - valorDiscount);
 
                 item.StatusIten = CartStatus.VendaCriada;
 
