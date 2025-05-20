@@ -60,6 +60,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docsConfigWebApi", "docsCon
 		src\docsConfigWebApi\ImplantarProjetoWebApiContainer.md = src\docsConfigWebApi\ImplantarProjetoWebApiContainer.md
 		src\docsConfigWebApi\InstalarPacotesEFMigrations.md = src\docsConfigWebApi\InstalarPacotesEFMigrations.md
 		src\docsConfigWebApi\InstalarPostgreSQL.md = src\docsConfigWebApi\InstalarPostgreSQL.md
+		TecnologiasUtilizadasProjeto.md = TecnologiasUtilizadasProjeto.md
 	EndProjectSection
 EndProject
 Global
