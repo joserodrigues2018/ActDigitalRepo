@@ -28,7 +28,7 @@ namespace Ambev.DeveloperEvaluation.Domain.Rules
 
                 decimal valorDiscount;
 
-                if (item.Quantity > 4 && item.Quantity <= 5)
+                if (item.Quantity >= 4 && item.Quantity <= 9)
                 {
                     item.Discount = 10;
                     valorDiscount = (item.Quantity * item.UnitPrice * item.Discount) / 100;
