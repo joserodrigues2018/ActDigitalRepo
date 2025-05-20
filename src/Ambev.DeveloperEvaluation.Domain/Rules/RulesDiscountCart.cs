@@ -26,7 +26,7 @@ namespace Ambev.DeveloperEvaluation.Domain.Rules
 
                 var valorItem = item.Quantity * item.UnitPrice;
 
-                var valorDiscount = 0M;
+                decimal valorDiscount;
 
                 if (item.Quantity > 4 && item.Quantity <= 5)
                 {
@@ -41,7 +41,7 @@ namespace Ambev.DeveloperEvaluation.Domain.Rules
                 else
                 {
                     item.Discount = 0;
-                    valorDiscount = (item.Quantity * item.UnitPrice);
+                    valorDiscount = item.Discount;
                 }
 
                 item.ValueTotIten = valorItem - valorDiscount;
