@@ -1,16 +1,11 @@
 ﻿using Ambev.DeveloperEvaluation.Application.Carts.CreateCart;
-using Ambev.DeveloperEvaluation.Application.Users.CreateUser;
-using Ambev.DeveloperEvaluation.Common.Security;
 using Ambev.DeveloperEvaluation.Domain.Entities;
 using Ambev.DeveloperEvaluation.Domain.Repositories;
 using Ambev.DeveloperEvaluation.Domain.Services;
-using Ambev.DeveloperEvaluation.ORM.Repositories;
 using AutoMapper;
 using FluentAssertions;
 using NSubstitute;
-using NSubstitute.ExceptionExtensions;
 using NSubstitute.ReceivedExtensions;
-using System.Reflection.Metadata;
 using Xunit;
 
 namespace Ambev.DeveloperEvaluation.Unit.Application
