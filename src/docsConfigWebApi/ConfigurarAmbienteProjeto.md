@@ -11,3 +11,6 @@ Configurar o Ambiente para executar o projeto e testar pelo Swagger ou Postman n
 9.Compilar o projeto no VS2022 Community
 10.Implantar Projeto WebApi no container -->> Consultar o documento ImplantarProjetoWebApiContainer.md
 11.Confiuração concluida projeto pode ser testado via Swagger ou Postman
+
+Acessar o documento em word com os prints das instalações dos softwares para o ambiente do projeto
+-->> pasta src\docsConfiWebApi\ImagemsCapture.doc
