@@ -6,13 +6,6 @@ namespace Ambev.DeveloperEvaluation.Domain.Rules
 {
     public class RulesDiscountCart : IRulesDiscountCart
     {
-        private readonly ICalcDiscount _calcDiscount;
-
-        public RulesDiscountCart(ICalcDiscount calcDiscount)
-        {
-            _calcDiscount = calcDiscount;
-        }
-
         public async Task<CartItem> DiscountCart(CartItem cartItem, CancellationToken cancellationToken)
         {
 
@@ -31,11 +24,16 @@ namespace Ambev.DeveloperEvaluation.Domain.Rules
                 cartItem.Discount = 0;
             }
 
-            cartItem.ValueTotIten = await _calcDiscount.ApplyDiscount(cartItem.UnitPrice, cartItem.Quantity, cartItem.Discount);
+            cartItem.ValueTotIten = await ApplyDiscount(cartItem.UnitPrice, cartItem.Quantity, cartItem.Discount);
 
             cartItem.StatusIten = CartStatus.VendaCriada;      
 
             return cartItem;
+        }
+
+        private Task<decimal> ApplyDiscount(decimal unitPrice, int quantItem, int percent)
+        {
+            return Task.FromResult(percent == 0 ? (quantItem * unitPrice) : (quantItem * unitPrice) - (quantItem * unitPrice * percent) / 100);
         }
     }
 }
