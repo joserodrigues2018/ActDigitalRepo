@@ -10,6 +10,7 @@ using FluentAssertions;
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;
 using NSubstitute.ReceivedExtensions;
+using System.Reflection.Metadata;
 using Xunit;
 
 namespace Ambev.DeveloperEvaluation.Unit.Application
@@ -88,6 +89,20 @@ namespace Ambev.DeveloperEvaluation.Unit.Application
             cartResult.Should().NotBeNull();
             createCartResult.Id.Should().Be(cart.Id);
             await _cartRepository.Received(1).CreateAsync(Arg.Any<Cart>(), Arg.Any<CancellationToken>());
+        }
+
+        [Fact(DisplayName = "Unit Test validation error")]
+        public async Task Create_Cart_Handle_ValidationException()
+        {
+            // Given
+            var command = new CreateCartCommand();
+
+            // When
+            var act = () =>  _createCartHandler.Handle(command, CancellationToken.None);
+
+            // Then
+            await act.Should().ThrowAsync<FluentValidation.ValidationException>();
+
         }
     }
 }
