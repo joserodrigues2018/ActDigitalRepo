@@ -1,17 +1,22 @@
 ﻿using Ambev.DeveloperEvaluation.Application.Carts.CreateCart;
+using Ambev.DeveloperEvaluation.Application.Users.CreateUser;
+using Ambev.DeveloperEvaluation.Common.Security;
 using Ambev.DeveloperEvaluation.Domain.Entities;
 using Ambev.DeveloperEvaluation.Domain.Repositories;
 using Ambev.DeveloperEvaluation.Domain.Services;
-using Ambev.DeveloperEvaluation.Unit.Application.Cart;
+using Ambev.DeveloperEvaluation.ORM.Repositories;
 using AutoMapper;
 using FluentAssertions;
 using NSubstitute;
+using NSubstitute.ExceptionExtensions;
+using NSubstitute.ReceivedExtensions;
 using Xunit;
 
 namespace Ambev.DeveloperEvaluation.Unit.Application
 {
     public  class CreateCartHandlerTests
     {
+        private readonly IProductRepository _productRepository;
         private readonly IRulesDiscountCart _ruleDiscountCart;
         private readonly ICartRepository _cartRepository;
         private readonly IMapper _mapper;
@@ -19,11 +24,12 @@ namespace Ambev.DeveloperEvaluation.Unit.Application
 
         public CreateCartHandlerTests() 
         {
+            _productRepository = Substitute.For<IProductRepository>();
             _ruleDiscountCart = Substitute.For<IRulesDiscountCart>();
             _cartRepository = Substitute.For<ICartRepository>();
             _mapper = Substitute.For<IMapper>();
 
-            _createCartHandler = new CreateCartHandler(_ruleDiscountCart, _cartRepository, _mapper);
+            _createCartHandler = new CreateCartHandler(_ruleDiscountCart, _cartRepository, _mapper, _productRepository);
 
         }
 
@@ -33,8 +39,9 @@ namespace Ambev.DeveloperEvaluation.Unit.Application
             // Given
             var command = CreateCartHandlerTestData.GenerateCartFaker();
 
-            var cart = new Ambev.DeveloperEvaluation.Domain.Entities.Cart
+            var cart = new Cart
             {
+                //Id = Guid.NewGuid(),
                 UserId = command.UserId,
                 Client = command.Client,
                 CartDate = command.CartDate,
@@ -53,28 +60,34 @@ namespace Ambev.DeveloperEvaluation.Unit.Application
                 cart.CartItens.Add(cartItem);
             }
 
-            var result = new CreateCartResult
-            { 
+            var cartResult = new CreateCartResult
+            {
+                //Id = Guid.NewGuid(),
                 UserId = command.UserId,
-                Client = command.Client
+                Client = command.Client,
+                CartDate = command.CartDate,
+                Filial = command.Filial,
+                NumeroVenda = command.NumeroVenda,
             };
 
-            _mapper.Map<Ambev.DeveloperEvaluation.Domain.Entities.Cart>(command).Returns(cart);
-            _mapper.Map<CreateCartResult>(cart).Returns(result);
+            _mapper.Map<Cart>(command).Returns(cart);
 
-            _cartRepository.CreateAsync(Arg.Any<Ambev.DeveloperEvaluation.Domain.Entities.Cart>(), Arg.Any<CancellationToken>())
-                .Returns(cart);
+            _cartRepository.CreateAsync(Arg.Any<Cart>(), Arg.Any<CancellationToken>()).Returns(cart);
 
-            _ruleDiscountCart.DiscountCart(Arg.Any<Ambev.DeveloperEvaluation.Domain.Entities.Cart>(),
-                                                                CancellationToken.None).Returns(cart);
+            _mapper.Map<CreateCartResult>(cart).Returns(cartResult);
+
+            var produtc = _productRepository.GetByIdAsync(Arg.Any<Guid>(), Arg.Any<CancellationToken>());
+
+            var cartNew = _ruleDiscountCart.DiscountCart(Arg.Any<CartItem>(), Arg.Any<CancellationToken>());
+
             // When
-
             var createCartResult = await _createCartHandler.Handle(command, CancellationToken.None);
 
             // Then
-            createCartResult.Should().NotBeNull();
+
+            cartResult.Should().NotBeNull();
             createCartResult.Id.Should().Be(cart.Id);
-            await _cartRepository.Received(1).CreateAsync(Arg.Any<Ambev.DeveloperEvaluation.Domain.Entities.Cart>(), Arg.Any<CancellationToken>());
+            await _cartRepository.Received(1).CreateAsync(Arg.Any<Cart>(), Arg.Any<CancellationToken>());
         }
     }
 }

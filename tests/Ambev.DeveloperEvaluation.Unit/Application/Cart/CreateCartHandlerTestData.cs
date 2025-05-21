@@ -1,7 +1,7 @@
 ﻿using Ambev.DeveloperEvaluation.Application.Carts.CreateCart;
 using Bogus;
 
-namespace Ambev.DeveloperEvaluation.Unit.Application.Cart
+namespace Ambev.DeveloperEvaluation.Unit.Application
 {
     public static class CreateCartHandlerTestData
     {
