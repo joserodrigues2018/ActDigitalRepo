@@ -36,5 +36,47 @@ namespace Ambev.DeveloperEvaluation.Unit.Domain
             cartItem.Should().NotBeNull();
             cartItem.StatusIten.Equals(cartItemFaker.Equals(CartStatus.VendaCriada));
         }
+        [Fact(DisplayName = "Test unit sucess discount cartItem rule 20% Discount")]
+        public async Task ApplyDiscount_CartItem_Percent20_Sucess()
+        {
+            Faker<CartItem> cartItemFaker = new Faker<CartItem>().CustomInstantiator(c => new CartItem()
+            {
+                Id = c.Random.Guid(),
+                CartId = c.Random.Guid(),
+                ProductId = c.Random.Guid().ToString(),
+                Quantity = 18,
+                UnitPrice = 12.50m,
+                StatusIten = CartStatus.VendaCriada,
+                Discount = 0,
+                ValueTotIten = 0
+            });
+
+            var cartItem = await _discountCart.DiscountCart(cartItemFaker, CancellationToken.None);
+
+            cartItem.Should().NotBeNull();
+            cartItem.StatusIten.Equals(cartItemFaker.Equals(CartStatus.VendaCriada));
+        }
+        [Fact(DisplayName = "Test unit sucess discount cartItem rule 0% Discount")]
+        public async Task ApplyDiscount_CartItem_PercentZero_Sucess()
+        {
+            Faker<CartItem> cartItemFaker = new Faker<CartItem>().CustomInstantiator(c => new CartItem()
+            {
+                Id = c.Random.Guid(),
+                CartId = c.Random.Guid(),
+                ProductId = c.Random.Guid().ToString(),
+                Quantity = 2,
+                UnitPrice = 12.50m,
+                StatusIten = CartStatus.VendaCriada,
+                Discount = 0,
+                ValueTotIten = 0
+            });
+
+            var cartItem = await _discountCart.DiscountCart(cartItemFaker, CancellationToken.None);
+
+            cartItem.Should().NotBeNull();
+            cartItem.StatusIten.Equals(cartItemFaker.Equals(CartStatus.VendaCriada));
+        }
+
+
     }
 }
