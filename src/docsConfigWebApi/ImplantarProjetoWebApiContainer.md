@@ -1,6 +1,7 @@
 Implantar projeto WebApi no Container
 
-Acessar o pasta (\abi-gth-omnia-developer-evaluation 4 1template\backend ) do projeto pelo Windows Explorer
+Acessar o pasta (\abi-gth-omnia-developer-evaluation 4 1template\backend ) ou a pasta antes
+da pasta src onde está o arquivo Dockefile do projeto pelo Windows Explorer
 e abrir um terminal Linux e executar os comando abaixo:
 
 -->> Build e publish do projeto WebApi que vai criar uma imagem para o Docker Desktop

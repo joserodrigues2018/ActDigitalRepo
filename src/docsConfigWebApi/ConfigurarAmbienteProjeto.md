@@ -6,11 +6,11 @@ Configurar o Ambiente para executar o projeto e testar pelo Swagger ou Postman n
 4.Instalar o Docker Desktop no Windows -->> https://docs.docker.com/desktop/setup/install/windows-install/
 5.Instalar o PostGreSQL no Docker Desktop -->>  Consultar Documento InstalarPostgreSQL.md
 6.Baixar ou Clonar o projeto do GitHub -->> https://github.com/joserodrigues2018/ActDigitalRepo
-7.Abrir o projeto no Visual Studio 2022 -->> Serão atualizados os pacotes de dependência para o projeto pelo Nuget
+7.Abrir o projeto no Visual Studio 2022 -->> Compilar o projeto e Restaurar pacotes Nuget
 8.Configurar o EntityFramework e o Migrations para o projeto -->> Consultar documento InstalarPacotesEntityMigrations.md
 9.Compilar o projeto no VS2022 Community
 10.Implantar Projeto WebApi no container -->> Consultar o documento ImplantarProjetoWebApiContainer.md
-11.Confiuração concluida projeto pode ser testado via Swagger ou Postman
+11.Confiuração concluida projeto pode ser testado via Swagger ou Postman pelo link -->> http://localhost:8080/swagger/index.html
 
 Acessar o documento em word com os prints das instalações dos softwares para o ambiente do projeto
 -->> pasta src\docsConfiWebApi\ImagemsCapture.doc

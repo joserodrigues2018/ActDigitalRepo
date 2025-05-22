@@ -13,6 +13,6 @@ dotnet tool install --global dotnet-ef --version 5.0.2
 dotnet tool uninstall -g dotnet-ef
 
 -->> Excutar comando dentro do ditorio do projeto pasta src
--->> Este comando vai atualizar as tabelas baseadas nas models do Entity Framework para o Banco de Da
+-->> Este comando vai atualizar as tabelas baseadas nas models do Entity Framework para o Banco de Dados
 
 dotnet ef database update -p .\Ambev.DeveloperEvaluation.ORM -s .\Ambev.DeveloperEvaluation.WebApi -v
