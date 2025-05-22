@@ -6,6 +6,6 @@
         public string? UserId { get; set; }
         public DateTime CartDate { get; set; }
 
-        public IList<GetCartItemResponse>? CartItems { get; set; }
+        public IList<GetCartItemResponse>? Products { get; set; }
     }
 }

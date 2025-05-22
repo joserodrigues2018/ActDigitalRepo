@@ -10,7 +10,7 @@ namespace Ambev.DeveloperEvaluation.Domain.Repositories
         /// <param name="Cart">The Cart to create</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>The created Cart</returns>
-        Task<Cart> CreateAsync(Cart Cart, CancellationToken cancellationToken = default);
+        Task<Cart> CreateAsync(Cart cart, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a Cart by their unique identifier

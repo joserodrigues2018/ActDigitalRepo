@@ -34,10 +34,10 @@ namespace Ambev.DeveloperEvaluation.Unit.Application
             {
                 UserId = command.UserId,
                 CartDate = command.CartDate,
-                CartItens = []
+                Products = []
             };
 
-            foreach (var item in command!.CartItens!)
+            foreach (var item in command!.Products!)
             {
                 var cartItem = new CartItem
                 {
@@ -45,7 +45,7 @@ namespace Ambev.DeveloperEvaluation.Unit.Application
                     Quantity = item.Quantity
                 };
 
-                cart.CartItens.Add(cartItem);
+                cart.Products.Add(cartItem);
             }
 
             var cartResult = new CreateCartResult

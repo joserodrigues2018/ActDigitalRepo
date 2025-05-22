@@ -11,7 +11,7 @@ namespace Ambev.DeveloperEvaluation.Application.Carts.CreateCart
         public string? UserId { get; set; }
         public DateTime CartDate { get; set; }
 
-        public IList<CreateCartItemCommand>? CartItens { get; set; }
+        public IList<CreateCartItemCommand>? Products { get; set; }
 
         public ValidationResultDetail Validate()
         {

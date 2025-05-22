@@ -20,10 +20,6 @@ public class DefaultContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-        modelBuilder.Entity<CartItem>()
-            .HasOne(c => c.CartIdNav)
-            .WithMany(v => v.CartItens)
-            .HasForeignKey(c => c.CartId);
 
         base.OnModelCreating(modelBuilder);
     }
