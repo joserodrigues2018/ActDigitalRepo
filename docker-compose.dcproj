@@ -17,5 +17,6 @@
     <None Include=".dockerignore" />
     <None Include="src\docsConfigWebApi\ImagensCapture.docx" />
     <None Include="src\docsConfigWebApi\InstalarWSL2DistroLinux.md" />
+    <None Include="src\docsConfigWebApi\TecnologiasUtilizadasProjeto.md" />
   </ItemGroup>
 </Project>

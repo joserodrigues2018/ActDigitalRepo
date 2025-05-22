@@ -62,7 +62,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docsConfigWebApi", "docsCon
 		src\docsConfigWebApi\InstalarPacotesEFMigrations.md = src\docsConfigWebApi\InstalarPacotesEFMigrations.md
 		src\docsConfigWebApi\InstalarPostgreSQL.md = src\docsConfigWebApi\InstalarPostgreSQL.md
 		src\docsConfigWebApi\InstalarWSL2DistroLinux.md = src\docsConfigWebApi\InstalarWSL2DistroLinux.md
-		TecnologiasUtilizadasProjeto.md = TecnologiasUtilizadasProjeto.md
+		src\docsConfigWebApi\TecnologiasUtilizadasProjeto.md = src\docsConfigWebApi\TecnologiasUtilizadasProjeto.md
 	EndProjectSection
 EndProject
 Global
