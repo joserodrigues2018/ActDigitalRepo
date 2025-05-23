@@ -15,5 +15,7 @@
     </None>
     <None Include="docker-compose.yml" />
     <None Include=".dockerignore" />
+    <None Include="src\docsConfigWebApi\DiagramaClassesProjeto.docx" />
+    <None Include="src\docsConfigWebApi\DiagramaEntidadeRelacionamento.docx" />
   </ItemGroup>
 </Project>
