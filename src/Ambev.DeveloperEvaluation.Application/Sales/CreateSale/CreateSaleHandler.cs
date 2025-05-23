@@ -33,7 +33,18 @@ namespace Ambev.DeveloperEvaluation.Application.Sales.CreateSale
             if (!validationResult.IsValid)
                 throw new ValidationException(validationResult.Errors);
 
-            var cart = _cartRepository.GetByIdAsync(command.CartId);
+            var cart = await _cartRepository.GetByIdAsync(command.CartId);
+
+            foreach (var item in cart!.Products!)
+            {
+                var CommandCartProducts = new CreateSaleItemCommand()
+                {
+                    ProductId = item.ProductId,
+                    Quantity = item.Quantity
+                };
+
+                command!.SaleOrderItems!.Add(CommandCartProducts);
+            }
 
             var sale = _mapper.Map<SaleOrder>(command);
 
