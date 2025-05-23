@@ -2,7 +2,6 @@
 using AutoMapper;
 using MediatR;
 using FluentValidation;
-using Ambev.DeveloperEvaluation.Domain.Entities;
 
 namespace Ambev.DeveloperEvaluation.Application.Carts.GetCart
 {
@@ -37,7 +36,6 @@ namespace Ambev.DeveloperEvaluation.Application.Carts.GetCart
                 throw new KeyNotFoundException($"Cart with ID {request.Id} not found");
         
             var result = _mapper.Map<GetCartResult>(cart);
-
 
             return result;
         }

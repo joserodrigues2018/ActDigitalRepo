@@ -1,6 +1,4 @@
-﻿using Ambev.DeveloperEvaluation.Domain.Enums;
-
-namespace Ambev.DeveloperEvaluation.Application.Carts.CreateCart
+﻿namespace Ambev.DeveloperEvaluation.Application.Carts.CreateCart
 {
     public class CreateCartItemResult
     {

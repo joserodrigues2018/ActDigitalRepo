@@ -31,23 +31,8 @@ namespace Ambev.DeveloperEvaluation.ORM.Migrations
                     b.Property<DateTime>("CartDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Client")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Filial")
-                        .HasColumnType("text");
-
-                    b.Property<int>("NumeroVenda")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("StatusCart")
-                        .HasColumnType("integer");
-
                     b.Property<string>("UserId")
                         .HasColumnType("text");
-
-                    b.Property<decimal>("ValueTotal")
-                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
 
@@ -63,28 +48,17 @@ namespace Ambev.DeveloperEvaluation.ORM.Migrations
                     b.Property<Guid>("CartId")
                         .HasColumnType("uuid");
 
-                    b.Property<int>("Discount")
-                        .HasColumnType("integer");
-
                     b.Property<string>("ProductId")
                         .HasColumnType("text");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
 
-                    b.Property<int>("StatusIten")
-                        .HasColumnType("integer");
-
-                    b.Property<decimal>("UnitPrice")
-                        .HasColumnType("numeric");
-
-                    b.Property<decimal>("ValueTotIten")
-                        .HasColumnType("numeric");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CartId");
 
+                    b.ToTable("CartItens");
                 });
 
             modelBuilder.Entity("Ambev.DeveloperEvaluation.Domain.Entities.Product", b =>
@@ -463,15 +437,28 @@ namespace Ambev.DeveloperEvaluation.ORM.Migrations
 
             modelBuilder.Entity("Ambev.DeveloperEvaluation.Domain.Entities.CartItem", b =>
                 {
+                    b.HasOne("Ambev.DeveloperEvaluation.Domain.Entities.Cart", null)
+                        .WithMany("Products")
                         .HasForeignKey("CartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Ambev.DeveloperEvaluation.Domain.Enums.SaleOrderItem", b =>
+                {
+                    b.HasOne("Ambev.DeveloperEvaluation.Domain.Entities.SaleOrder", null)
+                        .WithMany("SaleOrderItems")
+                        .HasForeignKey("SaleOrderId");
                 });
 
             modelBuilder.Entity("Ambev.DeveloperEvaluation.Domain.Entities.Cart", b =>
                 {
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("Ambev.DeveloperEvaluation.Domain.Entities.SaleOrder", b =>
+                {
+                    b.Navigation("SaleOrderItems");
                 });
 #pragma warning restore 612, 618
         }

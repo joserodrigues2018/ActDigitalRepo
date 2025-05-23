@@ -17,11 +17,6 @@ namespace Ambev.DeveloperEvaluation.ORM.Mapping
             builder.Property(u => u.ProductId).IsRequired().HasConversion<string>();
             builder.Property(u => u.Quantity).IsRequired().HasConversion<int>();
 
-
-            builder.Property(u => u.StatusIten)
-                    .HasConversion<string>()
-                    .HasMaxLength(20);
-
         }
     }
 }
