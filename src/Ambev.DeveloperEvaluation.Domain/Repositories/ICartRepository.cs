@@ -7,10 +7,10 @@ namespace Ambev.DeveloperEvaluation.Domain.Repositories
         /// <summary>
         /// Creates a new Cart in the repository
         /// </summary>
-        /// <param name="Cart">The Cart to create</param>
+        /// <param name="cart">The Cart to create</param>
         /// <param name="cancellationToken">Cancellation token</param>
         /// <returns>The created Cart</returns>
-        Task<Cart> CreateAsync(Cart Cart, CancellationToken cancellationToken = default);
+        Task<Cart> CreateAsync(Cart cart, CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a Cart by their unique identifier
@@ -20,5 +20,12 @@ namespace Ambev.DeveloperEvaluation.Domain.Repositories
         /// <returns>The Cart if found, null otherwise</returns>
         Task<Cart?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
 
+        /// <summary>
+        /// Delete Cart e CartItem
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        Task<bool> DeleteAsync(Guid id, CancellationToken cancellationToken = default);
     }
 }

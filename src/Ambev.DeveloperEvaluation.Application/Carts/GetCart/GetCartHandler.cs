@@ -38,22 +38,6 @@ namespace Ambev.DeveloperEvaluation.Application.Carts.GetCart
         
             var result = _mapper.Map<GetCartResult>(cart);
 
-            foreach (var item in cart!.CartItens!)
-            {
-                var resulItitem = new GetCartItemResult()
-                {
-                    Id = item.Id,
-                    CartId = item.CartId,
-                    ProductId = item.ProductId,
-                    Quantity = item.Quantity,
-                    UnitPrice = item.UnitPrice,
-                    ValueTotIten = item.ValueTotIten,
-                    Discount = item.Discount,
-                    StatusIten = item.StatusIten
-                };
-
-                result.CartItems!.Add(resulItitem);
-            }
 
             return result;
         }

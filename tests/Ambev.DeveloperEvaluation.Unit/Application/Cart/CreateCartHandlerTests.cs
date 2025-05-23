@@ -25,7 +25,7 @@ namespace Ambev.DeveloperEvaluation.Unit.Application
             _cartRepository = Substitute.For<ICartRepository>();
             _mapper = Substitute.For<IMapper>();
 
-            _createCartHandler = new CreateCartHandler(_ruleDiscountCart, _cartRepository, _mapper, _productRepository);
+            _createCartHandler = new CreateCartHandler( _cartRepository, _mapper);
 
         }
 
@@ -39,13 +39,11 @@ namespace Ambev.DeveloperEvaluation.Unit.Application
             {
                 //Id = Guid.NewGuid(),
                 UserId = command.UserId,
-                Client = command.Client,
                 CartDate = command.CartDate,
-                Filial = command.Filial,
-                CartItens = []
+                Products = []
             };
 
-            foreach (var item in command!.CartItens!)
+            foreach (var item in command!.Products!)
             {
                 var cartItem = new CartItem
                 {
@@ -53,17 +51,13 @@ namespace Ambev.DeveloperEvaluation.Unit.Application
                     Quantity = item.Quantity
                 };
 
-                cart.CartItens.Add(cartItem);
+                cart.Products.Add(cartItem);
             }
 
             var cartResult = new CreateCartResult
             {
-                //Id = Guid.NewGuid(),
                 UserId = command.UserId,
-                Client = command.Client,
                 CartDate = command.CartDate,
-                Filial = command.Filial,
-                NumeroVenda = command.NumeroVenda,
             };
 
             _mapper.Map<Cart>(command).Returns(cart);

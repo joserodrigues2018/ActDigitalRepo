@@ -16,7 +16,7 @@ namespace Ambev.DeveloperEvaluation.Application.Carts.CreateCart
         private readonly IMapper _mapper;
         private readonly IProductRepository _productRepository;
 
-        public CreateCartHandler(IRulesDiscountCart ruleDiscountCart, ICartRepository cartRepository, IMapper mapper, IProductRepository productRepository  )
+        public CreateCartHandler(ICartRepository cartRepository, IMapper mapper)
         {
             _ruleDiscountCart = ruleDiscountCart;
             _cartRepository = cartRepository;

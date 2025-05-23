@@ -34,23 +34,9 @@ namespace Ambev.DeveloperEvaluation.ORM.Migrations
                     b.Property<DateTime>("CartDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Client")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Filial")
-                        .HasColumnType("text");
-
-                    b.Property<int>("NumeroVenda")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("StatusCart")
-                        .HasColumnType("integer");
-
                     b.Property<string>("UserId")
                         .HasColumnType("text");
 
-                    b.Property<decimal>("ValueTotal")
-                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
 
@@ -66,8 +52,6 @@ namespace Ambev.DeveloperEvaluation.ORM.Migrations
                     b.Property<Guid>("CartId")
                         .HasColumnType("uuid");
 
-                    b.Property<int>("Discount")
-                        .HasColumnType("integer");
 
                     b.Property<string>("ProductId")
                         .HasColumnType("text");
@@ -75,14 +59,6 @@ namespace Ambev.DeveloperEvaluation.ORM.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
 
-                    b.Property<int>("StatusIten")
-                        .HasColumnType("integer");
-
-                    b.Property<decimal>("UnitPrice")
-                        .HasColumnType("numeric");
-
-                    b.Property<decimal>("ValueTotIten")
-                        .HasColumnType("numeric");
 
                     b.HasKey("Id");
 

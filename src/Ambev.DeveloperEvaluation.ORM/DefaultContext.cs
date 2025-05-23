@@ -11,7 +11,9 @@ public class DefaultContext : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<Cart> Carts { get; set; }
-    public DbSet<CartItem> CartItens { get; set; }  
+    public DbSet<CartItem> CartItens { get; set; }
+    public DbSet<SaleOrder> SaleOrders { get; set; }
+    public DbSet<SaleOrderItem> SaleOrderItems { get; set; }
 
     public DefaultContext(DbContextOptions<DefaultContext> options) : base(options)
     {
@@ -20,10 +22,6 @@ public class DefaultContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-        modelBuilder.Entity<CartItem>()
-            .HasOne(c => c.CartIdNav)
-            .WithMany(v => v.CartItens)
-            .HasForeignKey(c => c.CartId);
 
         base.OnModelCreating(modelBuilder);
     }
