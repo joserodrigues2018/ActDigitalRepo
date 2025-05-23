@@ -24,7 +24,5 @@
     <None Include="src\docsConfigWebApi\7.ImagensCapture.docx" />
     <None Include="src\docsConfigWebApi\8.DiagramaClassesProjeto.docx" />
     <None Include="src\docsConfigWebApi\9.DiagramaEntidadeRelacionamento.docx" />
-    <None Include="src\docsConfigWebApi\DiagramaClassesProjeto.docx" />
-    <None Include="src\docsConfigWebApi\DiagramaEntidadeRelacionamento.docx" />
   </ItemGroup>
 </Project>
