@@ -14,5 +14,5 @@ Banco de Dados PostgreSQL
 
 Bibliotecas para testes
 NSubistite
-Bugus
+Bogus
 
