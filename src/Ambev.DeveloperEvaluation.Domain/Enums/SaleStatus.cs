@@ -1,6 +1,6 @@
 ﻿namespace Ambev.DeveloperEvaluation.Domain.Enums
 {
-    public  enum CartStatus
+    public  enum SaleStatus
     {
         VendaCriada = 1,
         VendaModificada,
