@@ -13,18 +13,18 @@ namespace Ambev.DeveloperEvaluation.WebApi.Features.Sales
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SaleController : BaseController
+    public class SaleOrderController : BaseController
     {
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
 
-        public SaleController(IMediator mediator, IMapper mapper)
+        public SaleOrderController(IMediator mediator, IMapper mapper)
         {
             _mediator = mediator;
             _mapper = mapper;
         }
         /// <summary>
-        /// 
+        /// CreateSaleOrder
         /// </summary>
         /// <param name="idCart"></param>
         /// <param name="cancellationToken"></param>
@@ -51,7 +51,7 @@ namespace Ambev.DeveloperEvaluation.WebApi.Features.Sales
             });
         }
         /// <summary>
-        /// 
+        /// GetSaleOrder
         /// </summary>
         /// <param name="id"></param>
         /// <param name="cancellationToken"></param>

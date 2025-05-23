@@ -29,7 +29,7 @@ namespace Ambev.DeveloperEvaluation.ORM.Repositories
         {
             await _context.SaleOrders.Include( c => c.SaleOrderItems ).ToListAsync(cancellationToken);
 
-            return await _context.SaleOrders.FirstOrDefaultAsync( p => p.CartId == id, cancellationToken);
+            return await _context.SaleOrders.FirstOrDefaultAsync( p => p.Id == id, cancellationToken);
         }
     }
 }
