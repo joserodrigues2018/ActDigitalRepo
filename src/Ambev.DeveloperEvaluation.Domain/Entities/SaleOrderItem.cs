@@ -1,6 +1,6 @@
 ﻿using Ambev.DeveloperEvaluation.Domain.Common;
 
-namespace Ambev.DeveloperEvaluation.Domain.Enums
+namespace Ambev.DeveloperEvaluation.Domain.Entities
 {
     public class SaleOrderItem: BaseEntity
     {
