@@ -56,15 +56,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docsConfigWebApi", "docsConfigWebApi", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 	ProjectSection(SolutionItems) = preProject
-		src\docsConfigWebApi\ConfigurarAmbienteProjeto.md = src\docsConfigWebApi\ConfigurarAmbienteProjeto.md
+		src\docsConfigWebApi\8.DiagramaClassesProjeto.docx = src\docsConfigWebApi\8.DiagramaClassesProjeto.docx
+		src\docsConfigWebApi\9.DiagramaEntidadeRelacionamento.docx = src\docsConfigWebApi\9.DiagramaEntidadeRelacionamento.docx
 		src\docsConfigWebApi\DiagramaClassesProjeto.docx = src\docsConfigWebApi\DiagramaClassesProjeto.docx
+		src\docsConfigWebApi\7.ImagensCapture.docx = src\docsConfigWebApi\7.ImagensCapture.docx
+		src\docsConfigWebApi\6.TecnologiasUtilizadasProjeto.md = src\docsConfigWebApi\6.TecnologiasUtilizadasProjeto.md
+		src\docsConfigWebApi\5.ImplantarProjetoWebApiContainer.md = src\docsConfigWebApi\5.ImplantarProjetoWebApiContainer.md
+		src\docsConfigWebApi\4.InstalarPacotesEFMigrations.md = src\docsConfigWebApi\4.InstalarPacotesEFMigrations.md
+		src\docsConfigWebApi\3.InstalarPostgreSQL.md = src\docsConfigWebApi\3.InstalarPostgreSQL.md
+		src\docsConfigWebApi\2.InstalarWSL2DistroLinux.md = src\docsConfigWebApi\2.InstalarWSL2DistroLinux.md
+		src\docsConfigWebApi\1.ConfigurarAmbienteProjeto.md = src\docsConfigWebApi\1.ConfigurarAmbienteProjeto.md
 		src\docsConfigWebApi\DiagramaEntidadeRelacionamento.docx = src\docsConfigWebApi\DiagramaEntidadeRelacionamento.docx
-		src\docsConfigWebApi\ImagensCapture.docx = src\docsConfigWebApi\ImagensCapture.docx
-		src\docsConfigWebApi\ImplantarProjetoWebApiContainer.md = src\docsConfigWebApi\ImplantarProjetoWebApiContainer.md
-		src\docsConfigWebApi\InstalarPacotesEFMigrations.md = src\docsConfigWebApi\InstalarPacotesEFMigrations.md
-		src\docsConfigWebApi\InstalarPostgreSQL.md = src\docsConfigWebApi\InstalarPostgreSQL.md
-		src\docsConfigWebApi\InstalarWSL2DistroLinux.md = src\docsConfigWebApi\InstalarWSL2DistroLinux.md
-		src\docsConfigWebApi\TecnologiasUtilizadasProjeto.md = src\docsConfigWebApi\TecnologiasUtilizadasProjeto.md
 	EndProjectSection
 EndProject
 Global

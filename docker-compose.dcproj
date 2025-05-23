@@ -15,6 +15,15 @@
     </None>
     <None Include="docker-compose.yml" />
     <None Include=".dockerignore" />
+    <None Include="src\docsConfigWebApi\1.ConfigurarAmbienteProjeto.md" />
+    <None Include="src\docsConfigWebApi\2.InstalarWSL2DistroLinux.md" />
+    <None Include="src\docsConfigWebApi\3.InstalarPostgreSQL.md" />
+    <None Include="src\docsConfigWebApi\4.InstalarPacotesEFMigrations.md" />
+    <None Include="src\docsConfigWebApi\5.ImplantarProjetoWebApiContainer.md" />
+    <None Include="src\docsConfigWebApi\6.TecnologiasUtilizadasProjeto.md" />
+    <None Include="src\docsConfigWebApi\7.ImagensCapture.docx" />
+    <None Include="src\docsConfigWebApi\8.DiagramaClassesProjeto.docx" />
+    <None Include="src\docsConfigWebApi\9.DiagramaEntidadeRelacionamento.docx" />
     <None Include="src\docsConfigWebApi\DiagramaClassesProjeto.docx" />
     <None Include="src\docsConfigWebApi\DiagramaEntidadeRelacionamento.docx" />
   </ItemGroup>
