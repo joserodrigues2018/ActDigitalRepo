@@ -1,4 +1,5 @@
 ﻿using Ambev.DeveloperEvaluation.Domain.Entities;
+using Ambev.DeveloperEvaluation.Domain.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
@@ -11,7 +12,9 @@ public class DefaultContext : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<Cart> Carts { get; set; }
-    public DbSet<CartItem> CartItens { get; set; }  
+    public DbSet<CartItem> CartItens { get; set; }
+    public DbSet<SaleOrder> SaleOrders { get; set; }
+    public DbSet<SaleOrderItem> SaleOrderItems { get; set; }
 
     public DefaultContext(DbContextOptions<DefaultContext> options) : base(options)
     {
