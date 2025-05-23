@@ -13,7 +13,7 @@ namespace Ambev.DeveloperEvaluation.ORM.Mapping
             builder.HasKey(u => u.Id);
             builder.Property(u => u.Id).HasColumnType("uuid").HasDefaultValueSql("gen_random_uuid()");
 
-            builder.Property(u => u.SaleId).IsRequired().HasConversion<string>();
+            builder.Property(u => u.SaleOrderId).IsRequired().HasConversion<string>();
             builder.Property(u => u.ProductId).IsRequired().HasConversion<string>();
             builder.Property(u => u.Quantity).IsRequired().HasConversion<int>();
             builder.Property(u => u.UnitPrice).IsRequired().HasPrecision(5, 2);

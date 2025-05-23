@@ -422,9 +422,6 @@ namespace Ambev.DeveloperEvaluation.ORM.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
 
-                    b.Property<Guid>("SaleId")
-                        .HasColumnType("uuid");
-
                     b.Property<Guid?>("SaleOrderId")
                         .HasColumnType("uuid");
 
