@@ -7,9 +7,6 @@ namespace Ambev.DeveloperEvaluation.Domain.Rules
     {
         public async Task<SaleOrderItem> DiscountSale(SaleOrderItem saleItem, CancellationToken cancellationToken)
         {
-
-            var valorItem = (saleItem.Quantity * saleItem.UnitPrice);
-
             if (saleItem.Quantity >= 4 && saleItem.Quantity <= 9)
             {
                 saleItem.PercentDiscount = 10;
