@@ -15,7 +15,7 @@ namespace Ambev.DeveloperEvaluation.ORM.Repositories
 
         public async Task<SaleOrder> AddSaleOrder(SaleOrder sale, CancellationToken cancellationToken = default)
         {
-            await _context.SaleOrders.Include( s => s.SaleOrderItems).ToListAsync(cancellationToken);
+            await _context.SaleOrders.Include( s => s.Products).ToListAsync(cancellationToken);
 
             await _context.SaleOrders.AddRangeAsync(sale);
 
@@ -27,7 +27,7 @@ namespace Ambev.DeveloperEvaluation.ORM.Repositories
 
         public async Task<SaleOrder?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
-            await _context.SaleOrders.Include( c => c.SaleOrderItems ).ToListAsync(cancellationToken);
+            await _context.SaleOrders.Include( c => c.Products ).ToListAsync(cancellationToken);
 
             return await _context.SaleOrders.FirstOrDefaultAsync( p => p.Id == id, cancellationToken);
         }
