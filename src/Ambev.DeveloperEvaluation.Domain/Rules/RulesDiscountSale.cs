@@ -1,34 +1,41 @@
 ﻿using Ambev.DeveloperEvaluation.Domain.Entities;
+using Ambev.DeveloperEvaluation.Domain.Enums;
 using Ambev.DeveloperEvaluation.Domain.Services;
 
 namespace Ambev.DeveloperEvaluation.Domain.Rules
 {
     public class RulesDiscountSale : IRulesDiscountSale
     {
-        public async Task<SaleOrderItem> DiscountSale(SaleOrderItem saleItem, CancellationToken cancellationToken)
+        public SaleOrder DiscountSale(SaleOrder sale, CancellationToken cancellationToken)
         {
-            if (saleItem.Quantity >= 4 && saleItem.Quantity <= 9)
+            foreach (var item in sale!.Products!)
             {
-                saleItem.PercentDiscount = 10;
+                if (item.Quantity >= 4 && item.Quantity <= 9)
+                {
+                    item.PercentDiscount = 10;
+                }
+                else if (item.Quantity >= 10 && item.Quantity <= 20)
+                {
+                    item.PercentDiscount = 20;
+                }
+                else
+                {
+                    item.PercentDiscount = 0;
+                }
+
+                item.ValueTotIten = item.PercentDiscount == 0 ? (item.Quantity * item.UnitPrice) 
+                                                                : (item.Quantity * item.UnitPrice) 
+                                                                - (item.Quantity * item.UnitPrice * item.PercentDiscount) / 100;
+
+
+                sale.ValueTotal += item.ValueTotIten;
             }
-            else if (saleItem.Quantity >= 10 && saleItem.Quantity <= 20)
-            {
-                saleItem.PercentDiscount = 20;
-            }
-            else
-            {
-                saleItem.PercentDiscount = 0;
-            }
 
-            saleItem.ValueTotIten = await ApplyDiscount(saleItem.UnitPrice, saleItem.Quantity, saleItem.PercentDiscount);
+            sale.NumeroVenda = new Random().Next();
+            sale.Status = SaleStatus.VendaCriada;
 
 
-            return saleItem;
-        }
-
-        public static Task<decimal> ApplyDiscount(decimal unitPrice, int quantItem, int percent)
-        {
-            return Task.FromResult(percent == 0 ? (quantItem * unitPrice) : (quantItem * unitPrice) - (quantItem * unitPrice * percent) / 100);
+            return sale;
         }
     }
 }

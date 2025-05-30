@@ -13,7 +13,7 @@ namespace Ambev.DeveloperEvaluation.Domain.Entities
         public string? Filial { get; set; }
         public SaleStatus Status { get; set; }
 
-        public IList<SaleOrderItem>? SaleOrderItems { get; set; }
+        public IList<SaleOrderItem>? Products { get; set; }
 
         public SaleOrder()
         {

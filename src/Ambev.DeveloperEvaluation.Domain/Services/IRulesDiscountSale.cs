@@ -4,6 +4,6 @@ namespace Ambev.DeveloperEvaluation.Domain.Services
 {
     public interface IRulesDiscountSale
     {
-        Task<SaleOrderItem> DiscountSale(SaleOrderItem cartitem, CancellationToken cancellationToken);
+        SaleOrder DiscountSale(SaleOrder sale, CancellationToken cancellationToken);
     }
 }
