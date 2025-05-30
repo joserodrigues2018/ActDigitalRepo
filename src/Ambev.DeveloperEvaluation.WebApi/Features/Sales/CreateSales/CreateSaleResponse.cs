@@ -14,6 +14,6 @@ namespace Ambev.DeveloperEvaluation.WebApi.Features.Sales.CreateSale
         public string? Filial { get; set; }
         public SaleStatus Status { get; set; }
 
-        public IList<CreateSaleItemResponse>? SaleOrderItems { get; set; }
+        public IList<CreateSaleItemResponse>? Products { get; set; }
     }
 }
