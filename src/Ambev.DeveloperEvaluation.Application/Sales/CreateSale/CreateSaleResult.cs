@@ -13,6 +13,6 @@ namespace Ambev.DeveloperEvaluation.Application.Sales.CreateSale
         public string? Filial { get; set; }
         public SaleStatus Status { get; set; }
 
-        public IList<CreateSaleItemResult>? SaleOrderItems { get; set; }  
+        public IList<CreateSaleItemResult>? Products { get; set; }  
     }
 }

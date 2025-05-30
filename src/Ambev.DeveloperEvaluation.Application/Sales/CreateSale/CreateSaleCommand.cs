@@ -12,7 +12,7 @@ namespace Ambev.DeveloperEvaluation.Application.Sales.CreateSale
         public string? Client { get; set; }
         public string? Filial { get; set; }
 
-        public IList<CreateSaleItemCommand>? SaleOrderItems { get; set; } = [];
+        public IList<CreateSaleItemCommand>? Products { get; set; }
 
         public ValidationResultDetail Validate()
         {
