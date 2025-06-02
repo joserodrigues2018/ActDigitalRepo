@@ -1,9 +1,8 @@
-﻿using Ambev.DeveloperEvaluation.Domain.Entities;
-using Ambev.DeveloperEvaluation.Domain.Rules;
-using Ambev.DeveloperEvaluation.Domain.Enums;
+﻿using Ambev.DeveloperEvaluation.Domain.Rules;
 using FluentAssertions;
 using Xunit;
-using Bogus;
+using Ambev.DeveloperEvaluation.Unit.Domain.Rules;
+using Ambev.DeveloperEvaluation.Domain.Enums;
 
 namespace Ambev.DeveloperEvaluation.Unit.Domain
 {
@@ -17,59 +16,38 @@ namespace Ambev.DeveloperEvaluation.Unit.Domain
         }
 
         [Fact(DisplayName = "Test unit sucess discount saleItem rule 10% Discount")]
-        public async Task ApplyDiscount_CartItem_Percent10_Sucess()
+        public  void ApplyDiscount_CartItem_Percent10_Sucess()
         {
-            Faker<SaleOrderItem> saleItemFaker = new Faker<SaleOrderItem>().CustomInstantiator( c => new SaleOrderItem()
-            {
-                Id = c.Random.Guid(),
-                SaleOrderId = c.Random.Guid(),
-                ProductId = c.Random.Guid().ToString(),
-                Quantity = 8,
-                UnitPrice = 12.50m,
-                PercentDiscount = 0,
-                ValueTotIten = 0
-            });
+            var saleOrderFaker = DiscountSaleTestData.GenerateCartFaker();
 
-            var saleItem = await _discountSale.DiscountSale(saleItemFaker, CancellationToken.None);
+            var saleOrder = _discountSale.DiscountSale(saleOrderFaker, CancellationToken.None);
 
-            saleItem.Should().NotBeNull();
+            saleOrder.Should().NotBeNull();
+            saleOrder.Status.Should().Be(SaleStatus.VendaCriada);
         }
 
         [Fact(DisplayName = "Test unit sucess discount saleItem rule 20% Discount")]
-        public async Task ApplyDiscount_CartItem_Percent20_Sucess()
+        public void ApplyDiscount_CartItem_Percent20_Sucess()
         {
-            Faker<SaleOrderItem> saleItemFaker = new Faker<SaleOrderItem>().CustomInstantiator(c => new SaleOrderItem()
-            {
-                Id = c.Random.Guid(),
-                SaleOrderId = c.Random.Guid(),
-                ProductId = c.Random.Guid().ToString(),
-                Quantity = 18,
-                UnitPrice = 12.50m,
-                PercentDiscount = 0,
-                ValueTotIten = 0
-            });
+            var saleOrderFaker = DiscountSaleTestData.GenerateCartFaker();
 
-            var saleItem = await _discountSale.DiscountSale(saleItemFaker, CancellationToken.None);
+            var saleOrder = _discountSale.DiscountSale(saleOrderFaker, CancellationToken.None);
 
-            saleItem.Should().NotBeNull();
+            saleOrder.Should().NotBeNull();
+            saleOrder.Status.Should().Be(SaleStatus.VendaCriada);
+
+
         }
         [Fact(DisplayName = "Test unit sucess discount cartItem rule 0% Discount")]
-        public async Task ApplyDiscount_CartItem_PercentZero_Sucess()
+        public void ApplyDiscount_CartItem_PercentZero_Sucess()
         {
-            Faker<SaleOrderItem> saleItemFaker = new Faker<SaleOrderItem>().CustomInstantiator(c => new SaleOrderItem()
-            {
-                Id = c.Random.Guid(),
-                SaleOrderId = c.Random.Guid(),
-                ProductId = c.Random.Guid().ToString(),
-                Quantity = 2,
-                UnitPrice = 12.50m,
-                PercentDiscount = 0,
-                ValueTotIten = 0
-            });
+            var saleOrderFaker = DiscountSaleTestData.GenerateCartFaker();
 
-            var saleItem = await _discountSale.DiscountSale(saleItemFaker, CancellationToken.None);
+            var saleOrder = _discountSale.DiscountSale(saleOrderFaker, CancellationToken.None);
 
-            saleItem.Should().NotBeNull();
+            saleOrder.Should().NotBeNull();
+            saleOrder.Status.Should().Be(SaleStatus.VendaCriada);
+
         }
     }
 }
