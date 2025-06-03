@@ -72,4 +72,18 @@ public class UserRepository : IUserRepository
         await _context.SaveChangesAsync(cancellationToken);
         return true;
     }
+    /// <summary>
+    /// Update a user
+    /// </summary>
+    /// <param name="user"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    /// <exception cref="NotImplementedException"></exception>
+    public async Task<User> UpdateAsync(User user, CancellationToken cancellationToken = default)
+    {
+        _context.Users.Update(user);
+        await _context.SaveChangesAsync(cancellationToken);
+
+        return user;
+    }
 }
