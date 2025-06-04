@@ -23,6 +23,7 @@ public class UpdateUserRequestValidator : AbstractValidator<UpdateUserRequest>
     /// </remarks>
     public UpdateUserRequestValidator()
     {
+        RuleFor(x => x.Id).NotEmpty().WithMessage("User ID is required");
         RuleFor(user => user.Email).SetValidator(new EmailValidator());
         RuleFor(user => user.Username).NotEmpty().Length(3, 50);
         RuleFor(user => user.Password).SetValidator(new PasswordValidator());
