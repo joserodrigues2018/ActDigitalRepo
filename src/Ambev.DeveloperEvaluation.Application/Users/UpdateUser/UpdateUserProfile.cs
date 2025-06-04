@@ -13,7 +13,6 @@ public class UpdateUserProfile : Profile
     /// </summary>
     public UpdateUserProfile()
     {
-        CreateMap<UpdateUserCommand, User>();
         CreateMap<User, UpdateUserResult>();
     }
 }
