@@ -25,5 +25,16 @@ namespace Ambev.DeveloperEvaluation.ORM.Repositories
 
             return product;
         }
+
+        public async Task<bool> DeleteAsync(Guid id, CancellationToken cancellationToken = default)
+        {
+            var product = await GetByIdAsync(id, cancellationToken);
+            if (product == null)
+                return false;
+
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync(cancellationToken);
+            return true;
+        }
     }
 }
