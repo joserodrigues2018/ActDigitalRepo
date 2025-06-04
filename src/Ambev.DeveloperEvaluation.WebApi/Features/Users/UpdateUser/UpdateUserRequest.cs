@@ -8,6 +8,11 @@ namespace Ambev.DeveloperEvaluation.WebApi.Features.Users.UpdateUser;
 public class UpdateUserRequest
 {
     /// <summary>
+    /// The unique identifier of the user
+    /// </summary>
+    public Guid Id { get; set; }
+
+    /// <summary>
     /// Gets or sets the username. Must be unique and contain only valid characters.
     /// </summary>
     public string Username { get; set; } = string.Empty;

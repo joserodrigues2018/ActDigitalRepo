@@ -43,16 +43,19 @@ public class UpdateUserHandler : IRequestHandler<UpdateUserCommand, UpdateUserRe
         if (!validationResult.IsValid)
             throw new ValidationException(validationResult.Errors);
 
-        var existingUser = await _userRepository.GetByEmailAsync(command.Email, cancellationToken);
+        var existingUser = await _userRepository.GetByIdAsync(command.Id, cancellationToken) ?? throw new InvalidOperationException($"User with Id {command.Id} not exists");
+        
+        existingUser.Username = command.Username;
+        existingUser.Email = command.Email;
+        existingUser.Phone = command.Phone;
+        existingUser.Password = _passwordHasher.HashPassword(command.Password);
+        existingUser.Role = command.Role;
+        existingUser.Status = command.Status;
+        existingUser.UpdatedAt = DateTime.UtcNow;
 
-        if (existingUser == null)
-            throw new InvalidOperationException($"User with email {command.Email} not exists");
-
-        var user = _mapper.Map<User>(command);
-        user.Password = _passwordHasher.HashPassword(command.Password);
-
-        var updatedUser = await _userRepository.UpdateAsync(user, cancellationToken);
+        var updatedUser = await _userRepository.UpdateAsync(existingUser, cancellationToken);
         var result = _mapper.Map<UpdateUserResult>(updatedUser);
+
         return result;
     }
 }

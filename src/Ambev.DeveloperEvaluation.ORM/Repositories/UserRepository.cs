@@ -81,6 +81,8 @@ public class UserRepository : IUserRepository
     /// <exception cref="NotImplementedException"></exception>
     public async Task<User> UpdateAsync(User user, CancellationToken cancellationToken = default)
     {
+        _context.Entry(user).State = EntityState.Modified;
+
         _context.Users.Update(user);
         await _context.SaveChangesAsync(cancellationToken);
 

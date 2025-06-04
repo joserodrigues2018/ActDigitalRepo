@@ -15,7 +15,13 @@ public class UpdateUserResponse
     /// <summary>
     /// The user's full name
     /// </summary>
-    public string Name { get; set; } = string.Empty;
+    public string Username { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Gets or sets the password. Must meet security requirements.
+    /// </summary>
+    public string Password { get; set; } = string.Empty;
+
 
     /// <summary>
     /// The user's email address
@@ -36,4 +42,10 @@ public class UpdateUserResponse
     /// The current status of the user
     /// </summary>
     public UserStatus Status { get; set; }
+
+    /// <summary>
+    /// Gets the date and time of the last update to the user's information.
+    /// </summary>
+    public DateTime? UpdatedAt { get; set; }
+
 }
