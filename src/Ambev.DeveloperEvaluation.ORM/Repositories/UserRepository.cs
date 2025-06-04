@@ -73,12 +73,11 @@ public class UserRepository : IUserRepository
         return true;
     }
     /// <summary>
-    /// Update a user
+    /// Updated User
     /// </summary>
     /// <param name="user"></param>
     /// <param name="cancellationToken"></param>
-    /// <returns></returns>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <returns>Model Entity User Updated</returns>
     public async Task<User> UpdateAsync(User user, CancellationToken cancellationToken = default)
     {
         _context.Entry(user).State = EntityState.Modified;
