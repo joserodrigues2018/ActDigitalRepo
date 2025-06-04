@@ -27,5 +27,13 @@ namespace Ambev.DeveloperEvaluation.Domain.Repositories
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         Task<bool> DeleteAsync(Guid id, CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// UpdateAsync
+        /// </summary>
+        /// <param name="cart"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        Task<Cart> UpdateAsync(Cart cart, CancellationToken cancellationToken = default);   
     }
 }
