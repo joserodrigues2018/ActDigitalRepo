@@ -36,5 +36,15 @@ namespace Ambev.DeveloperEvaluation.ORM.Repositories
             await _context.SaveChangesAsync(cancellationToken);
             return true;
         }
+
+        public async Task<Product> UpdateAsync(Product product, CancellationToken cancellationToken = default)
+        {
+            _context.Entry(product).State = EntityState.Modified;
+
+            _context.Products.Update(product);
+            await _context.SaveChangesAsync(cancellationToken);
+
+            return product;
+        }
     }
 }
