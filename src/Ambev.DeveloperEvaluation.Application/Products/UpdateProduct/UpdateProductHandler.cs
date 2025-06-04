@@ -32,8 +32,8 @@ public class UpdateProductHandler : IRequestHandler<UpdateProductCommand, Update
         existingProduct.Price = command.Price;
         existingProduct.Image = command!.Image!;
 
-        var updatedUser = await _productRepository.UpdateAsync(existingProduct, cancellationToken);
-        var result = _mapper.Map<UpdateProductResult>(updatedUser);
+        var updatedProduct = await _productRepository.UpdateAsync(existingProduct, cancellationToken);
+        var result = _mapper.Map<UpdateProductResult>(updatedProduct);
 
         return result;
     }
