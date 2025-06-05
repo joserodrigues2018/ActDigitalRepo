@@ -2,7 +2,7 @@
 
 namespace Ambev.DeveloperEvaluation.WebApi.Features.Products.UpdateProduct
 {
-    public class UpdatetProductRequestValidator: AbstractValidator<UpdateProductResquest>
+    public class UpdatetProductRequestValidator: AbstractValidator<UpdateProductIdRequest>
     {
         public UpdatetProductRequestValidator()
         {
