@@ -120,7 +120,7 @@ namespace Ambev.DeveloperEvaluation.WebApi.Features.Products
         [HttpPut("{id}")]
         [ProducesResponseType(typeof(ApiResponseWithData<UpdateProductResponse>), StatusCodes.Status201Created)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
-        public async Task<IActionResult> UpdateProduct(UpdateProductResquest request, CancellationToken cancellationToken)
+        public async Task<IActionResult> UpdateProduct(UpdateProductIdRequest request, CancellationToken cancellationToken)
         {
             var validator = new UpdatetProductRequestValidator();
             var validationResult = await validator.ValidateAsync(request, cancellationToken);
