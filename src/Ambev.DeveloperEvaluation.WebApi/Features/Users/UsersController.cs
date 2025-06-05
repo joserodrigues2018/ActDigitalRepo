@@ -10,6 +10,7 @@ using Ambev.DeveloperEvaluation.Application.Users.CreateUser;
 using Ambev.DeveloperEvaluation.Application.Users.GetUser;
 using Ambev.DeveloperEvaluation.Application.Users.DeleteUser;
 using Ambev.DeveloperEvaluation.Application.Users.UpdateUser;
+using FluentValidation;
 
 namespace Ambev.DeveloperEvaluation.WebApi.Features.Users;
 
@@ -121,10 +122,10 @@ public class UsersController : BaseController
         });
     }
 
-    [HttpPut]
+    [HttpPut("{Id}")]
     [ProducesResponseType(typeof(ApiResponseWithData<UpdateUserResponse>), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> UpdateUser([FromBody] UpdateUserRequest request, CancellationToken cancellationToken)
+    public async Task<IActionResult> UpdateUser([FromRoute] UpdateUserIdRequest request,  CancellationToken cancellationToken)
     {
         var validator = new UpdateUserRequestValidator();
         var validationResult = await validator.ValidateAsync(request, cancellationToken);
@@ -133,6 +134,7 @@ public class UsersController : BaseController
             return BadRequest(validationResult.Errors);
 
         var command = _mapper.Map<UpdateUserCommand>(request);
+
         var response = await _mediator.Send(command, cancellationToken);
 
         return Ok(new ApiResponseWithData<UpdateUserResponse>
