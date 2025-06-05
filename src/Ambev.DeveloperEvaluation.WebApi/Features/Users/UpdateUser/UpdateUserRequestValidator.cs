@@ -7,7 +7,7 @@ namespace Ambev.DeveloperEvaluation.WebApi.Features.Users.UpdateUser;
 /// <summary>
 /// Validator for UpdateUserRequest that defines validation rules for user creation.
 /// </summary>
-public class UpdateUserRequestValidator : AbstractValidator<UpdateUserRequest>
+public class UpdateUserRequestValidator : AbstractValidator<UpdateUserIdRequest>
 {
     /// <summary>
     /// Initializes a new instance of the UpdateUserRequestValidator with defined validation rules.
@@ -24,11 +24,11 @@ public class UpdateUserRequestValidator : AbstractValidator<UpdateUserRequest>
     public UpdateUserRequestValidator()
     {
         RuleFor(x => x.Id).NotEmpty().WithMessage("User ID is required");
-        RuleFor(user => user.Email).SetValidator(new EmailValidator());
-        RuleFor(user => user.Username).NotEmpty().Length(3, 50);
-        RuleFor(user => user.Password).SetValidator(new PasswordValidator());
-        RuleFor(user => user.Phone).Matches(@"^\+?[1-9]\d{1,14}$");
-        RuleFor(user => user.Status).NotEqual(UserStatus.Unknown);
-        RuleFor(user => user.Role).NotEqual(UserRole.None);
+        RuleFor(user => user.Request!.Email).SetValidator(new EmailValidator());
+        RuleFor(user => user.Request!.Username).NotEmpty().Length(3, 50);
+        RuleFor(user => user.Request!.Password).SetValidator(new PasswordValidator());
+        RuleFor(user => user.Request!.Phone).Matches(@"^\+?[1-9]\d{1,14}$");
+        RuleFor(user => user.Request!.Status).NotEqual(UserStatus.Unknown);
+        RuleFor(user => user.Request!.Role).NotEqual(UserRole.None);
     }
 }
