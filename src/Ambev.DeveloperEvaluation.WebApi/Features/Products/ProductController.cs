@@ -117,8 +117,8 @@ namespace Ambev.DeveloperEvaluation.WebApi.Features.Products
             });
         }
 
-        [HttpPut("{id}")]
-        [ProducesResponseType(typeof(ApiResponseWithData<UpdateProductResponse>), StatusCodes.Status201Created)]
+        [HttpPut("{Id}")]
+        [ProducesResponseType(typeof(ApiResponseWithData<UpdateProductResponse>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> UpdateProduct(UpdateProductIdRequest request, CancellationToken cancellationToken)
         {

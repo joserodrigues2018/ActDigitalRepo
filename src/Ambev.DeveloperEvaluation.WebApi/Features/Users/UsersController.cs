@@ -123,9 +123,9 @@ public class UsersController : BaseController
     }
 
     [HttpPut("{Id}")]
-    [ProducesResponseType(typeof(ApiResponseWithData<UpdateUserResponse>), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ApiResponseWithData<UpdateUserResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> UpdateUser([FromRoute] UpdateUserIdRequest request,  CancellationToken cancellationToken)
+    public async Task<IActionResult> UpdateUser(UpdateUserIdRequest request,  CancellationToken cancellationToken)
     {
         var validator = new UpdateUserRequestValidator();
         var validationResult = await validator.ValidateAsync(request, cancellationToken);
